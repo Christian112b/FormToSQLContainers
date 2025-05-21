@@ -1,0 +1,104 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Stackfindover: Sign in</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/formStyles.css') }}">
+</head>
+
+<body>
+    <div class="login-root">
+        <div class="box-root flex-flex flex-direction--column" style="min-height: 100vh;flex-grow: 1;">
+            <div class="box-root padding-top--24 flex-flex flex-direction--column" style="flex-grow: 1; z-index: 9;">
+
+                <div class="formbg-outer">
+                    <div class="formbg">
+                        <div class="formbg-inner padding-horizontal--48">
+                            <span class="padding-bottom--15">1. Datos personales</span>
+
+                            <form id="stripe-login" method="POST" action="{{ url_for('submit') }}">
+                                <!-- Nombre de estudiante (fila completa) -->
+                                <div class="field padding-bottom--24">
+                                    <label for="nombre">Nombre de estudiante</label>
+                                    <input type="text" name="nombre" id="nombre">
+                                </div>
+                                <!-- Fila 1: Edad y Sexo -->
+                                <div class="form-row field padding-bottom--24" style="display: flex; gap: 16px;">
+                                    <div class="form-col" style="flex:1;">
+                                        <label for="edad">Edad</label>
+                                        <input type="number" name="edad" id="edad">
+                                    </div>
+                                    <div class="form-col" style="flex:1;">
+                                        <label for="sexo">Sexo</label>
+                                        <select name="sexo" id="sexo">
+                                            <option value="Hombre">Hombre</option>
+                                            <option value="Mujer">Mujer</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- Fila 2: Carrera y Semestre -->
+                                <div class="form-row field padding-bottom--24" style="display: flex; gap: 16px;">
+                                    <div class="form-col" style="flex:1;">
+                                        <label for="carrera">Carrera</label>
+                                        <select name="carrera" id="carrera">
+                                            <option value="ITI">ITI</option>
+                                            <option value="ITEM">ITEM</option>
+                                            <option value="LAG">LAG</option>
+                                            <option value="LMI">LMI</option>
+                                            <option value="ISTI">ISTI</option>
+                                            <option value="ITMA">ITMA</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-col" style="flex:1;">
+                                        <label for="semestre">Semestre</label>
+                                        <select name="semestre" id="semestre">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9+">9+</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- Fila 3: Matrícula y Fecha -->
+                                <div class="form-row field padding-bottom--24" style="display: flex; gap: 16px;">
+                                    <div class="form-col" style="flex:1;">
+                                        <label for="matricula">Matrícula</label>
+                                        <input type="number" name="matricula" id="matricula">
+                                    </div>
+                                    <div class="form-col" style="flex:1;">
+                                        <label for="fecha">Fecha</label>
+                                        <input type="date" name="fecha" id="fecha">
+                                    </div>
+                                </div>
+                                <!-- Fila 4: Fecha nacimiento y Lugar de nacimiento -->
+                                <div class="form-row field padding-bottom--24" style="display: flex; gap: 16px;">
+                                    <div class="form-col" style="flex:1;">
+                                        <label for="fecha_nacimiento">Fecha nacimiento</label>
+                                        <input type="date" name="fecha_nacimiento" id="fecha_nacimiento">
+                                    </div>
+                                    <div class="form-col" style="flex:1;">
+                                        <label for="lugar_nacimiento">Lugar de nacimiento</label>
+                                        <input type="text" name="lugar_nacimiento" id="lugar_nacimiento">
+                                    </div>
+                                </div>
+                                <!-- ...puedes dejar los campos originales si los necesitas, o eliminarlos... -->
+                                <div class="field padding-bottom--24">
+                                    <input type="submit" name="submit" value="Enviar">
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,15 +1,33 @@
 from flask import Flask, render_template, request, url_for, redirect
+from controllers.database import *
 
 app = Flask(__name__)
 
 @app.route('/')
 def home():
+
+    # db = Database()
+    # data = db.get_estudiantes()
+
     return render_template('form.html')
 
 @app.route('/submit', methods=['POST'])
 def submit():
     print("Form submitted")
     print(request.form)
+
+    db = Database()
+    db.insert.estudiante(
+        nombre=request.form['nombre'],
+        edad=request.form['edad'],
+        sexo=request.form['sexo'],
+        carrera=request.form['carrera'],
+        semestre=request.form['semestre'],
+        matricula=request.form['matricula'],
+        fecha=request.form['fecha'],
+        fecha_nacimiento=request.form['fecha_nacimiento'],
+        lugar_nacimiento=request.form['lugar_nacimiento']
+    )
 
     return redirect(url_for('success'))
 

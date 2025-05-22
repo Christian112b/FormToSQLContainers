@@ -241,3 +241,34 @@ select:focus {
   border-color: #0078d7;
   background: #fff;
 }
+
+        .main-flex {
+            display: flex;
+            min-height: 100vh;
+        }
+        .left-panel {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .right-panel {
+            flex: 1;
+            padding: 40px;
+            background: #f7f7f7;
+            overflow-x: auto;
+        }
+        /* Opcional: para que la tabla se vea mejor */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px 12px;
+            text-align: left;
+        }
+        th {
+            background: #e0e0e0;
+        }

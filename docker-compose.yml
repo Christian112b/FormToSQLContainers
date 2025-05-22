@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    working_dir: /app
+    command: python app.py
+    volumes:
+      - ./app:/app
+    environment:
+      - FLASK_ENV=development
+
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: formulario
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql-init:/docker-entrypoint-initdb.d

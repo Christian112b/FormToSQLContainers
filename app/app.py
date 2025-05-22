@@ -6,10 +6,10 @@ app = Flask(__name__)
 @app.route('/')
 def home():
 
-    # db = Database()
-    # data = db.get_estudiantes()
+    db = Database()
+    estudiantes = db.get_estudiantes()
 
-    return render_template('form.html')
+    return render_template('form.html', estudiantes=estudiantes)
 
 @app.route('/submit', methods=['POST'])
 def submit():
@@ -17,7 +17,7 @@ def submit():
     print(request.form)
 
     db = Database()
-    db.insert.estudiante(
+    db.insert_estudiante(
         nombre=request.form['nombre'],
         edad=request.form['edad'],
         sexo=request.form['sexo'],

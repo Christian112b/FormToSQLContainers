@@ -4,7 +4,7 @@ services:
   web:
     build: .
     ports:
-      - "8000:8000"
+      - "8000:5000"
     working_dir: /app
     command: python app.py
     volumes:
@@ -19,6 +19,6 @@ services:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: formulario
     ports:
-      - "3306:3306"
+      - "3307:3306"
     volumes:
       - ./mysql-init:/docker-entrypoint-initdb.d

@@ -7,11 +7,11 @@
     body {
         text-align: center;
         padding: 40px 0;
-        background: #EBF0F5;
+        background: #f5f5f5;
     }
 
     h1 {
-        color: #88B04B;
+        color: #003366;
         font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
         font-weight: 900;
         font-size: 40px;
@@ -26,7 +26,7 @@
     }
 
     i {
-        color: #9ABC66;
+        color: #FF9900;
         font-size: 100px;
         line-height: 200px;
         margin-left: -15px;
@@ -39,12 +39,13 @@
         border-radius: 4px;
         box-shadow: 0 2px 3px #C8D0D8;
         display: inline-block;
+        border-top: 5px solid #FF9900;
     }
 
     button {
         margin-top: 24px;
         padding: 12px 32px;
-        background-color: #88B04B;
+        background-color: #003366;
         color: #fff;
         border: none;
         border-radius: 25px;
@@ -57,7 +58,7 @@
     }
 
     button:hover {
-        background-color: #6d8f3c;
+        background-color: #002244;
     }
 </style>
 
@@ -68,7 +69,7 @@
         </div>
         <h1>Enviado</h1>
         <p>Tus datos se han enviado correctamente</p>
-        <button onclick="window.location.href='{{ url_for('home') }}'">Regresar</button>
+        <a href="{{ url_for('home') }}"><button>Regresar</button></a>
     </div>
 </body>
 

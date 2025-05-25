@@ -2,11 +2,9 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Formulario</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario UPSLP</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/formStyles.css') }}">
-    <style>
-
-    </style>
 </head>
 
 <body>
@@ -14,93 +12,97 @@
         <!-- Lado izquierdo: Formulario -->
         <div class="left-panel">
             <div class="login-root">
-                <div class="box-root flex-flex flex-direction--column" style="flex-grow: 1;">
-                    <div class="box-root padding-top--24 flex-flex flex-direction--column"
-                        style="flex-grow: 1; z-index: 9;">
-                        <div class="formbg-outer">
-                            <div class="formbg">
-                                <div class="formbg-inner padding-horizontal--48">
-                                    <span class="padding-bottom--15">1. Datos personales</span>
-                                    <form id="stripe-login" method="POST" action="{{ url_for('submit') }}">
-                                        <!-- ...tu formulario aquí, igual que antes... -->
-                                        <!-- Nombre de estudiante (fila completa) -->
-                                        <div class="field padding-bottom--24">
-                                            <label for="nombre">Nombre de estudiante</label>
-                                            <input type="text" name="nombre" id="nombre">
+                <div class="box-root flex-flex flex-direction--column" style="flex-grow: 1; width: 100%;">
+                    <div class="formbg-outer">
+                        <div class="formbg">
+                            <div class="formbg-inner">
+                                <span class="form-title">1. Datos personales</span>
+                                <form id="student-form" method="POST" action="{{ url_for('submit') }}">
+                                    <!-- Nombre de estudiante (fila completa) -->
+                                    <div class="field">
+                                        <label for="nombre" class="required-field">Nombre de estudiante</label>
+                                        <input type="text" name="nombre" id="nombre" required minlength="3" maxlength="100" placeholder="Ingrese nombre completo">
+                                        <span class="validation-message">Por favor ingrese un nombre válido</span>
+                                    </div>
+                                    <!-- Fila 1: Edad y Sexo -->
+                                    <div class="form-row field" style="display: flex; gap: 16px;">
+                                        <div class="form-col" style="flex:1;">
+                                            <label for="edad" class="required-field">Edad</label>
+                                            <input type="number" name="edad" id="edad" required min="16" max="99" placeholder="Ej: 22">
+                                            <span class="validation-message">Ingrese una edad válida (16-99)</span>
                                         </div>
-                                        <!-- Fila 1: Edad y Sexo -->
-                                        <div class="form-row field padding-bottom--24"
-                                            style="display: flex; gap: 16px;">
-                                            <div class="form-col" style="flex:1;">
-                                                <label for="edad">Edad</label>
-                                                <input type="number" name="edad" id="edad">
-                                            </div>
-                                            <div class="form-col" style="flex:1;">
-                                                <label for="sexo">Sexo</label>
-                                                <select name="sexo" id="sexo">
-                                                    <option value="Hombre">Hombre</option>
-                                                    <option value="Mujer">Mujer</option>
-                                                </select>
-                                            </div>
+                                        <div class="form-col" style="flex:1;">
+                                            <label for="sexo" class="required-field">Sexo</label>
+                                            <select name="sexo" id="sexo" required>
+                                                <option value="">Seleccione</option>
+                                                <option value="Hombre">Hombre</option>
+                                                <option value="Mujer">Mujer</option>
+                                            </select>
+                                            <span class="validation-message">Seleccione una opción</span>
                                         </div>
-                                        <!-- Fila 2: Carrera y Semestre -->
-                                        <div class="form-row field padding-bottom--24"
-                                            style="display: flex; gap: 16px;">
-                                            <div class="form-col" style="flex:1;">
-                                                <label for="carrera">Carrera</label>
-                                                <select name="carrera" id="carrera">
-                                                    <option value="ITI">ITI</option>
-                                                    <option value="ITEM">ITEM</option>
-                                                    <option value="LAG">LAG</option>
-                                                    <option value="LMI">LMI</option>
-                                                    <option value="ISTI">ISTI</option>
-                                                    <option value="ITMA">ITMA</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-col" style="flex:1;">
-                                                <label for="semestre">Semestre</label>
-                                                <select name="semestre" id="semestre">
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                    <option value="5">5</option>
-                                                    <option value="6">6</option>
-                                                    <option value="7">7</option>
-                                                    <option value="8">8</option>
-                                                    <option value="9+">9+</option>
-                                                </select>
-                                            </div>
+                                    </div>
+                                    <!-- Fila 2: Carrera y Semestre -->
+                                    <div class="form-row field" style="display: flex; gap: 16px;">
+                                        <div class="form-col" style="flex:1;">
+                                            <label for="carrera" class="required-field">Carrera</label>
+                                            <select name="carrera" id="carrera" required>
+                                                <option value="">Seleccione</option>
+                                                <option value="ITI">ITI</option>
+                                                <option value="ITEM">ITEM</option>
+                                                <option value="LAG">LAG</option>
+                                                <option value="LMI">LMI</option>
+                                                <option value="ISTI">ISTI</option>
+                                                <option value="ITMA">ITMA</option>
+                                            </select>
+                                            <span class="validation-message">Seleccione una carrera</span>
                                         </div>
-                                        <!-- Fila 3: Matrícula y Fecha -->
-                                        <div class="form-row field padding-bottom--24"
-                                            style="display: flex; gap: 16px;">
-                                            <div class="form-col" style="flex:1;">
-                                                <label for="matricula">Matrícula</label>
-                                                <input type="number" name="matricula" id="matricula">
-                                            </div>
-                                            <div class="form-col" style="flex:1;">
-                                                <label for="fecha">Fecha</label>
-                                                <input type="date" name="fecha" id="fecha">
-                                            </div>
+                                        <div class="form-col" style="flex:1;">
+                                            <label for="semestre" class="required-field">Semestre</label>
+                                            <select name="semestre" id="semestre" required>
+                                                <option value="">Seleccione</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9+">9+</option>
+                                            </select>
+                                            <span class="validation-message">Seleccione un semestre</span>
                                         </div>
-                                        <!-- Fila 4: Fecha nacimiento y Lugar de nacimiento -->
-                                        <div class="form-row field padding-bottom--24"
-                                            style="display: flex; gap: 16px;">
-                                            <div class="form-col" style="flex:1;">
-                                                <label for="fecha_nacimiento">Fecha nacimiento</label>
-                                                <input type="date" name="fecha_nacimiento" id="fecha_nacimiento">
-                                            </div>
-                                            <div class="form-col" style="flex:1;">
-                                                <label for="lugar_nacimiento">Lugar de nacimiento</label>
-                                                <input type="text" name="lugar_nacimiento" id="lugar_nacimiento">
-                                            </div>
+                                    </div>
+                                    <!-- Fila 3: Matrícula y Fecha -->
+                                    <div class="form-row field" style="display: flex; gap: 16px;">
+                                        <div class="form-col" style="flex:1;">
+                                            <label for="matricula" class="required-field">Matrícula</label>
+                                            <input type="number" name="matricula" id="matricula" required min="100000" max="999999" placeholder="Ej: 173577">
+                                            <span class="validation-message">Ingrese una matrícula válida (6 dígitos)</span>
                                         </div>
-                                        <div class="field padding-bottom--24">
-                                            <input type="submit" name="submit" value="Enviar">
+                                        <div class="form-col" style="flex:1;">
+                                            <label for="fecha" class="required-field">Fecha</label>
+                                            <input type="date" name="fecha" id="fecha" required>
+                                            <span class="validation-message">Seleccione una fecha</span>
                                         </div>
-                                    </form>
-                                </div>
+                                    </div>
+                                    <!-- Fila 4: Fecha nacimiento y Lugar de nacimiento -->
+                                    <div class="form-row field" style="display: flex; gap: 16px;">
+                                        <div class="form-col" style="flex:1;">
+                                            <label for="fecha_nacimiento" class="required-field">Fecha nacimiento</label>
+                                            <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" required>
+                                            <span class="validation-message">Seleccione fecha de nacimiento</span>
+                                        </div>
+                                        <div class="form-col" style="flex:1;">
+                                            <label for="lugar_nacimiento" class="required-field">Lugar de nacimiento</label>
+                                            <input type="text" name="lugar_nacimiento" id="lugar_nacimiento" required minlength="3" placeholder="Ej: San Luis Potosí">
+                                            <span class="validation-message">Ingrese un lugar válido</span>
+                                        </div>
+                                    </div>
+                                    <div class="field">
+                                        <input type="submit" name="submit" value="Enviar">
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -148,6 +150,49 @@
             </table>
         </div>
     </div>
+
+    <script>
+        // Validación del formulario
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('student-form');
+            
+            // Validar el formulario antes de enviar
+            form.addEventListener('submit', function(event) {
+                let isValid = true;
+                const requiredFields = form.querySelectorAll('[required]');
+                
+                requiredFields.forEach(field => {
+                    if (!field.value.trim()) {
+                        isValid = false;
+                        field.parentElement.classList.add('invalid');
+                    } else {
+                        field.parentElement.classList.remove('invalid');
+                    }
+                });
+                
+                if (!isValid) {
+                    event.preventDefault();
+                    alert('Por favor complete todos los campos requeridos correctamente.');
+                }
+            });
+            
+            // Validar campos individuales al cambiar
+            form.querySelectorAll('input, select').forEach(field => {
+                field.addEventListener('blur', function() {
+                    if (this.hasAttribute('required') && !this.value.trim()) {
+                        this.parentElement.classList.add('invalid');
+                    } else {
+                        this.parentElement.classList.remove('invalid');
+                    }
+                });
+                
+                // Limpiar la clase 'invalid' cuando el usuario comienza a escribir
+                field.addEventListener('input', function() {
+                    this.parentElement.classList.remove('invalid');
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
